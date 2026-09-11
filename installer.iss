@@ -11,6 +11,7 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 DefaultDirName={autopf}\Planning ADMR
 DefaultGroupName={#MyAppName}
+OutputDir={#SourcePath}
 OutputBaseFilename=Setup-Planning-ADMR-{#MyAppVersion}
 Compression=lzma2/max
 SolidCompression=yes

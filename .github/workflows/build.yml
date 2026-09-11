@@ -29,15 +29,10 @@ jobs:
       - name: Build installer
         run: iscc installer.iss
 
-      - name: Zip portable app
-        run: Compress-Archive -Path 'dist\Planning ADMR' -DestinationPath 'Planning-ADMR-portable-win64.zip'
-
       - uses: actions/upload-artifact@v4
         with:
           name: windows-installers
-          path: |
-            Setup-Planning-ADMR-*.exe
-            Planning-ADMR-portable-win64.zip
+          path: Setup-Planning-ADMR-*.exe
 
   macos:
     runs-on: macos-latest
@@ -81,5 +76,18 @@ jobs:
           path: artifacts
       - uses: softprops/action-gh-release@v2
         with:
-          files: artifacts/**/*
-          generate_release_notes: true
+          # Only the built installers are attached to the release.
+          # (GitHub itself always adds automatic "Source code (zip/tar.gz)"
+          # links to every release; those come from GitHub, not from this CI,
+          # and cannot be switched off.)
+          files: |
+            artifacts/windows-installers/Setup-Planning-ADMR-*.exe
+            artifacts/macos-installer/Planning-ADMR-macos.dmg
+          generate_release_notes: false
+          body: |
+            ## Planning ADMR — installers only
+
+            - **Windows:** download `Setup-Planning-ADMR-*.exe`, double-click, Next → Install → Finish.
+            - **macOS:** download `Planning-ADMR-macos.dmg`, open it, drag the app to Applications.
+
+            No admin rights needed. No Python needed.
