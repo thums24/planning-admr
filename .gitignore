@@ -1,0 +1,31 @@
+# Virtualenv lives in the project root (never commit it)
+bin/
+include/
+lib/
+lib64/
+share/
+pyvenv.cfg
+pip-selfcheck.json
+
+# Personal data: family schedules downloaded from ADMR
+Mon*.html
+planning.html
+*.pdf
+
+# PyInstaller / installers
+build/
+dist/
+*.dmg
+Output/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# macOS / Windows / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+requests>=2.31
+beautifulsoup4>=4.12
+keyring>=24
+fpdf2>=2.7
+pywin32; sys_platform == 'win32'
